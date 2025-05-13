@@ -1,0 +1,98 @@
+export const teams = [
+  {
+    name: "AP BREN",
+    logo: "/teams/Apbren.png",
+    color: "rgba(255, 214, 0, 0.5)",
+    players: [
+      { role: "EXP Lane", country: "Philippines", name: "Der" },
+      { role: "Jungler", country: "Philippines", name: "Jamespangks" },
+      { role: "Middle", country: "Philippines", name: "Chovskyrt" },
+      { role: "Gold Lane", country: "Philippines", name: "Shizou" },
+      { role: "Roamer", country: "Philippines", name: "KKDot" },
+    ],
+  },
+  {
+    name: "Aurora Gaming",
+    logo: "/teams/Aurora.svg",
+    color: "rgba(0, 230, 255, 0.5)",
+    players: [
+      { role: "EXP Lane", country: "Philippines", name: "Edward" },
+      { role: "Jungler", country: "Philippines", name: "Demonkite" },
+      { role: "Middle", country: "Philippines", name: "Yue" },
+      { role: "Gold Lane", country: "Philippines", name: "Domengkite" },
+      { role: "Roamer", country: "Philippines", name: "Renejay" },
+    ],
+  },
+  {
+    name: "Omega Esports",
+    logo: "/teams/omega.png",
+    color: "rgba(0, 153, 102, 0.5)",
+    players: [
+      { role: "EXP Lane", country: "Philippines", name: "Louis" },
+      { role: "Jungler", country: "Philippines", name: "Andoryuuu" },
+      { role: "Middle", country: "Philippines", name: "Uk1r" },
+      { role: "Gold Lane", country: "Philippines", name: "Jowm" },
+      { role: "Roamer", country: "Philippines", name: "Super Yoshi" },
+    ],
+  },
+  {
+    name: "ONIC PH",
+    logo: "/teams/onicph.png",
+    color: "rgba(255, 221, 51, 0.5)",
+    players: [
+      { role: "EXP Lane", country: "Philippines", name: "Kirk" },
+      { role: "Jungler", country: "Philippines", name: "K1NGKONG" },
+      { role: "Middle", country: "Philippines", name: "Super Frince" },
+      { role: "Gold Lane", country: "Philippines", name: "Kelra" },
+      { role: "Roamer", country: "Philippines", name: "Brusko" },
+    ],
+  },
+  {
+    name: "Team Falcons",
+    logo: "/teams/falcons.png",
+    color: "rgba(0, 191, 165, 0.5)",
+    players: [
+      { role: "EXP Lane", country: "Philippines", name: "FlapTzy" },
+      { role: "Jungler", country: "Philippines", name: "KyleTzy" },
+      { role: "Middle", country: "Philippines", name: "Pheww" },
+      { role: "Gold Lane", country: "Philippines", name: "Super Marco" },
+      { role: "Roamer", country: "Philippines", name: "Owgwen" },
+    ],
+  },
+  {
+    name: "Team Liquid PH",
+    logo: "/teams/tlph.png",
+    color: "rgba(0, 51, 102, 0.5)",
+    players: [
+      { role: "EXP Lane", country: "Philippines", name: "Sanford" },
+      { role: "Jungler", country: "Philippines", name: "KarlTzy" },
+      { role: "Middle", country: "Philippines", name: "Sanji" },
+      { role: "Gold Lane", country: "Philippines", name: "Oheb" },
+      { role: "Roamer", country: "Philippines", name: "Jaypee" },
+    ],
+  },
+  {
+    name: "TNC Pro Team",
+    logo: "/teams/tnc.png",
+    color: "rgba(255, 87, 34, 0.5)",
+    players: [
+      { role: "EXP Lane", country: "Philippines", name: "Lord JM" },
+      { role: "Jungler", country: "Philippines", name: "Zaida" },
+      { role: "Middle", country: "Philippines", name: "LanceCy" },
+      { role: "Gold Lane", country: "Philippines", name: "Bennyqt" },
+      { role: "Roamer", country: "Philippines", name: "Yawi" },
+    ],
+  },
+  {
+    name: "Twisted Minds PH",
+    logo: "/teams/twistedminds.png",
+    color: "rgba(255, 64, 129, 0.5)",
+    players: [
+      { role: "EXP Lane", country: "Philippines", name: "Jeymz" },
+      { role: "Jungler", country: "Philippines", name: "MP the King" },
+      { role: "Middle", country: "Philippines", name: "Hadji" },
+      { role: "Gold Lane", country: "Philippines", name: "Outplayed" },
+      { role: "Roamer", country: "Philippines", name: "Escalera" },
+    ],
+  },
+];
