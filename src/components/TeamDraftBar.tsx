@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Hero } from '@/types/hero';
 
 interface PlayerInfo {
@@ -33,7 +34,7 @@ const TeamDraftBar: React.FC<TeamDraftBarProps> = ({
     <div className={`flex flex-col items-center w-[40%] py-6 px-2 ${teamColor.replace(/bg-gradient-to-br from-[^ ]+ to-[^ ]+/, 'bg-black')} rounded-xl shadow-lg`}>
       {/* Coach */}
       <div className="flex flex-col items-center mb-4">
-        <img
+        <Image
           src={teamLogo}
           alt={teamName}
           onError={e => { (e.currentTarget as HTMLImageElement).src = fallbackCoach; }}
@@ -47,7 +48,7 @@ const TeamDraftBar: React.FC<TeamDraftBarProps> = ({
         {players.map((player, idx) => (
           <div key={idx} className="flex flex-col items-center">
             <div className="relative w-16 h-16 rounded-lg border-2 border-white bg-black shadow-md flex items-center justify-center overflow-hidden">
-              <img
+              <Image
                 src={picks[idx]?.imageUrl || fallbackHero}
                 alt={picks[idx]?.name || 'Empty'}
                 onError={e => { (e.currentTarget as HTMLImageElement).src = fallbackHero; }}
@@ -70,7 +71,7 @@ const TeamDraftBar: React.FC<TeamDraftBarProps> = ({
       <div className="flex flex-row gap-2">
         {bans.map((ban, idx) => (
           <div key={idx} className="w-10 h-10 rounded-lg border border-gray-500 bg-black flex items-center justify-center overflow-hidden shadow-sm">
-            <img
+            <Image
               src={ban?.imageUrl || fallbackHero}
               alt={ban?.name || 'Ban'}
               onError={e => { (e.currentTarget as HTMLImageElement).src = fallbackHero; }}

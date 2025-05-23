@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Hero, HeroRole } from '@/types/hero';
+import Image from 'next/image';
 
 const ROLES: HeroRole[] = ['Tank', 'Fighter', 'Assassin', 'Mage', 'Marksman', 'Support'];
 
@@ -41,6 +42,8 @@ const MiniStage: React.FC<MiniStageProps> = ({ heroes, onHeroClick, isUserTurn, 
       <div className="flex flex-row justify-center gap-2 mb-4 w-full">
         <button
           type="button"
+          tabIndex={0}
+          style={{ cursor: 'pointer' }}
           className={`px-4 py-2 rounded font-semibold text-sm ${roleFilter === 'All' ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-200 hover:bg-blue-800'}`}
           onClick={() => setRoleFilter('All')}
         >
@@ -49,6 +52,8 @@ const MiniStage: React.FC<MiniStageProps> = ({ heroes, onHeroClick, isUserTurn, 
         {ROLES.map(role => (
           <button
             type="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
             key={role}
             className={`px-4 py-2 rounded font-semibold text-sm ${roleFilter === role ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-200 hover:bg-blue-800'}`}
             onClick={() => setRoleFilter(role)}
@@ -66,7 +71,7 @@ const MiniStage: React.FC<MiniStageProps> = ({ heroes, onHeroClick, isUserTurn, 
             disabled={!isUserTurn || disabled}
             className={`w-16 h-16 rounded-lg border-2 ${isUserTurn ? 'border-white hover:border-gray-400' : 'border-gray-700 opacity-50 cursor-not-allowed'} bg-black flex items-center justify-center transition`}
           >
-            <img src={hero.imageUrl} alt={hero.name} className="w-14 h-14 object-cover rounded" />
+            <Image src={hero.imageUrl} alt={hero.name} className="w-14 h-14 object-cover rounded" width={56} height={56} />
           </button>
         ))}
       </div>

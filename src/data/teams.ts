@@ -13,7 +13,7 @@ export const teams = [
   },
   {
     name: "Aurora Gaming",
-    logo: "/teams/Aurora.svg",
+    logo: "/teams/Aurora_blue.png",
     color: "rgba(0, 230, 255, 0.5)",
     players: [
       { role: "EXP Lane", country: "Philippines", name: "Edward" },

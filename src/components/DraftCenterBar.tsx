@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface DraftCenterBarProps {
   matchScore: string;
@@ -11,7 +12,7 @@ interface DraftCenterBarProps {
 const DraftCenterBar: React.FC<DraftCenterBarProps> = ({ matchScore, phase, timer, logo, details }) => {
   return (
     <div className="flex flex-col items-center justify-center w-[20%] py-4 bg-gradient-to-b from-gray-900 to-black rounded-lg shadow-xl">
-      <img src={logo} className="w-16 h-16 mb-2" alt="Tournament Logo" />
+      <Image src={logo} className="w-16 h-16 mb-2" alt="Tournament Logo" width={64} height={64} />
       <div className="text-2xl font-extrabold text-white tracking-widest mb-1">{matchScore}</div>
       <div className="text-lg text-white font-bold mb-1 uppercase">{phase}</div>
       <div className="text-4xl font-mono text-white bg-black/70 px-6 py-2 rounded-lg shadow mb-2">{timer}</div>

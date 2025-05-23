@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, Role } from "./heroes";
+import { Hero } from "./heroes";
 
 interface DraftStatsProps {
   team: string;

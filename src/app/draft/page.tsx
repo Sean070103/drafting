@@ -21,6 +21,14 @@ const TURN_TIME = 30;
 
 type DraftMode = 'ranked' | 'tournament';
 
+// Add TeamObject type for real team objects
+interface TeamObject {
+  name: string;
+  logo: string;
+  color: string;
+  players: { role: string; country: string; name: string }[];
+}
+
 // Generate draft sequence based on mode and first pick
 function getDraftSequence(mode: DraftMode, firstPick: Team): DraftTurn[] {
   const sequence: DraftTurn[] = [];
@@ -144,39 +152,6 @@ function getMetaRecommendations(draft: DraftState | null, currentTurn: DraftTurn
     .map(item => item.hero);
 }
 
-// Mock data for demonstration
-const blueCoach = { name: 'Eson', avatarUrl: '/coach-eson.jpg' };
-const redCoach = { name: 'Ynot', avatarUrl: '/coach-ynot.jpg' };
-const bluePlayers = ['Hadjizy', 'Sensui', 'Escalera', 'Jeymz', 'Outplayed'];
-const redPlayers = ['Kirk', 'SuperPrince', 'K1NGKONG', 'Brusko', 'Kelra'];
-const blueOverlays = [null, '+BUFFED', null, null, null];
-const redOverlays = [null, null, '+NERFED', null, '+NERFED'];
-const matchInfo = 'REGULAR SEASON\nWEEK 8 - DAY 3';
-
-// Example draft state (replace with your logic)
-const initialDraftState: DraftState = {
-  Blue: {
-    picks: [
-      heroes.find(h => h.id === 'zhuxin') || null,
-      heroes.find(h => h.id === 'fredrinn') || null,
-      heroes.find(h => h.id === 'floryn') || null,
-      null,
-      null,
-    ],
-    bans: [null, null, null, null, null],
-  },
-  Red: {
-    picks: [
-      heroes.find(h => h.id === 'suyou') || null,
-      heroes.find(h => h.id === 'kalea') || null,
-      heroes.find(h => h.id === 'harith') || null,
-      null,
-      null,
-    ],
-    bans: [null, null, null, null, null],
-  },
-};
-
 function getRandomAvailableHero(draft: DraftState): Hero | null {
   const picked = [...draft.Blue.picks, ...draft.Red.picks].filter(Boolean) as Hero[];
   const banned = [...draft.Blue.bans, ...draft.Red.bans].filter(Boolean) as Hero[];
@@ -187,72 +162,12 @@ function getRandomAvailableHero(draft: DraftState): Hero | null {
   return available[Math.floor(Math.random() * available.length)];
 }
 
-// Mock data for demonstration
-const blueTeam: Parameters<typeof TeamDraftBar>[0] = {
-  team: 'left',
-  teamName: 'COACH ESON',
-  teamLogo: '/coach-eson.jpg',
-  teamColor: 'bg-gradient-to-br from-blue-900 to-blue-700',
-  players: [
-    { name: 'Hadjizy' },
-    { name: 'Sensui', status: 'Buffed' },
-    { name: 'Escalera' },
-    { name: 'Jeymz' },
-    { name: 'Outplayed' },
-  ],
-  picks: [
-    heroes.find(h => h.id === 'zhuxin') || null,
-    heroes.find(h => h.id === 'fredrinn') || null,
-    heroes.find(h => h.id === 'floryn') || null,
-    null,
-    null,
-  ],
-  bans: [
-    heroes.find(h => h.id === 'miya') || null,
-    null, null, null, null
-  ],
-};
-
-const redTeam: Parameters<typeof TeamDraftBar>[0] = {
-  team: 'right',
-  teamName: 'COACH YNOT',
-  teamLogo: '/coach-ynot.jpg',
-  teamColor: 'bg-gradient-to-br from-red-900 to-red-700',
-  players: [
-    { name: 'Kirk' },
-    { name: 'SuperPrince' },
-    { name: 'K1NGKONG', status: 'Nerfed' },
-    { name: 'Brusko' },
-    { name: 'Kelra' },
-  ],
-  picks: [
-    null,
-    null,
-    heroes.find(h => h.id === 'harith') || null,
-    null,
-    null,
-  ],
-  bans: [
-    heroes.find(h => h.id === 'grock') || null,
-    heroes.find(h => h.id === 'argus') || null,
-    heroes.find(h => h.id === 'gatotkaca') || null,
-    null, null
-  ],
-};
-
-const matchScore = '2 - 1';
-const phase = 'BAN PHASE';
-const timer = 30;
-const logo = '/tournament-logo.png';
-const details = 'REGULAR SEASON\nWEEK 8 - DAY 3';
-
 export default function DraftPage() {
-  const searchParams = useSearchParams();
   const [showSetup, setShowSetup] = useState(true);
-  const [draftMode, setDraftMode] = useState<'ranked' | 'tournament'>('tournament');
+  const [draftMode] = useState<'ranked' | 'tournament'>('tournament');
   const [userSide, setUserSide] = useState<'Blue' | 'Red'>('Blue');
-  const [userTeam, setUserTeam] = useState<any>(null);
-  const [opponentTeam, setOpponentTeam] = useState<any>(null);
+  const [userTeam, setUserTeam] = useState<TeamObject | null>(null);
+  const [opponentTeam, setOpponentTeam] = useState<TeamObject | null>(null);
   const [draft, setDraft] = useState<DraftState>({
     Blue: { picks: Array(5).fill(null), bans: Array(5).fill(null) },
     Red: { picks: Array(5).fill(null), bans: Array(5).fill(null) }
@@ -267,7 +182,6 @@ export default function DraftPage() {
 
   const draftSequence = useMemo(() => getDraftSequence(draftMode, userSide), [draftMode, userSide]);
   const currentTurn = useMemo(() => draftSequence[turn], [draftSequence, turn]);
-  const metaRecommendations = useMemo(() => getMetaRecommendations(draft, currentTurn), [draft, currentTurn]);
   const blueTeamData = userSide === 'Blue' ? userTeam : opponentTeam;
   const redTeamData = userSide === 'Red' ? userTeam : opponentTeam;
 
@@ -367,7 +281,7 @@ export default function DraftPage() {
                 className={`bg-white rounded-lg shadow p-4 flex flex-col items-center hover:scale-105 transition ${userTeam?.name === team.name ? 'ring-4 ring-blue-500' : ''}`}
                 onClick={() => setUserTeam(team)}
               >
-                <img src={team.logo} alt={team.name} className="w-20 h-20 object-contain mb-2" />
+                <Image src={team.logo} alt={team.name} className="w-20 h-20 object-contain mb-2" width={80} height={80} />
                 <span className="font-bold text-black">{team.name}</span>
               </button>
             ))}

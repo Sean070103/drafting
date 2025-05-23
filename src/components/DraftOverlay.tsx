@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface DraftOverlayProps {
   matchScore: string;
@@ -15,7 +16,7 @@ const DraftOverlay: React.FC<DraftOverlayProps> = ({ matchScore, phase, timer, l
         <div className="flex items-center justify-between">
           {/* Left Section - Match Info */}
           <div className="flex items-center space-x-8">
-            <img src={logo} alt="Tournament Logo" className="h-16 w-16 object-contain" />
+            <Image src={logo} alt="Tournament Logo" className="h-16 w-16 object-contain" width={64} height={64} />
             <div className="text-white">
               <div className="text-2xl font-bold tracking-wider">{matchScore}</div>
               <div className="text-sm text-gray-400 whitespace-pre-line">{details}</div>

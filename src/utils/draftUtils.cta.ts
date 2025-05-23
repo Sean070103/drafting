@@ -41,19 +41,26 @@ export const startDraft = async (): Promise<DraftState> => {
   };
 };
 
+// Suppress linter warning for unused parameters by eslint-disable-next-line
 export const makePick = async (
-  team: Team,
-  hero: Hero,
-  index: number
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _team: Team,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _hero: Hero,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _index: number
 ): Promise<DraftState> => {
   // TODO: Implement API call to make pick
   throw new Error('Not implemented');
 };
 
 export const makeBan = async (
-  team: Team,
-  hero: Hero,
-  index: number
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _team: Team,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _hero: Hero,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _index: number
 ): Promise<DraftState> => {
   // TODO: Implement API call to make ban
   throw new Error('Not implemented');

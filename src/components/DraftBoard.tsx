@@ -1,5 +1,6 @@
 import React from 'react';
 import { Hero, Team, DraftState } from '@/types/hero';
+import Image from 'next/image';
 
 interface DraftBoardProps {
   draftState: DraftState;
@@ -21,10 +22,12 @@ const DraftBoard: React.FC<DraftBoardProps> = ({ draftState, currentTeam }) => {
     >
       {hero ? (
         <>
-          <img 
+          <Image 
             src={hero.imageUrl} 
             alt={hero.name} 
             className="w-full h-full object-cover rounded-lg"
+            width={80}
+            height={80}
           />
           <div className="absolute -top-2 -right-2">
             {hero.roles && hero.roles.length > 0 && (
